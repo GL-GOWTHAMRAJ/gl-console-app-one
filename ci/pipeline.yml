@@ -1,0 +1,15 @@
+resources:
+- name: gl-console-app-one
+  type: git
+  check_every: 301h
+  source:
+    branch: master
+    uri: https://github.com/GL-GOWTHAMRAJ/gl-console-app-one
+
+jobs:
+- name: build-and-deploy-console-app-one
+  plan:
+  - get: gl-console-app-one
+    trigger: true
+  - task: build
+    file: gl-console-app-one/ci/tasks/build.yml
